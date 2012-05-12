@@ -24,3 +24,15 @@ var pictureViewer = function(pictArray)
                             picGallery.appendChild(list)
                         }
                     }
+					
+					
+// for resizing the size of the upload box window
+resize = (function()
+		 {
+			$(function()
+			{
+        		var h = $(window).height();
+        		var w = $(window).width();
+        		$("#new-pics").css('width',(w < 768) ? 500 : 800);
+			});
+		 });

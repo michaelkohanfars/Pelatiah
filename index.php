@@ -14,7 +14,7 @@
 	
 	//This function gets the file names of all images in the current directory
 	//and ouputs them as a JavaScript array
-	$dirname="/Users/Mike/localhost/Pelatiah/images/thumbs/";
+	$dirname="images/thumbs/";
 	$pattern="(\.jpg$)|(\.png$)|(\.jpeg$)|(\.gif$)"; //valid image extensions
 	$files = array();
 	$curimage=0;
@@ -106,7 +106,6 @@
    <script type="text/javascript" src="js/pict.js"></script>
      <script type="text/javascript">
 	    var jsArray = ["<?php echo join("\", \"", $files); ?>"];
-	    alert(jsArray);
 	    pictureViewer(jsArray);
     </script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
