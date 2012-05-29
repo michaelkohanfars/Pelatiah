@@ -12,9 +12,33 @@
                <input type="submit" value="Send files" onclick="showSubPics()"id=filesUploaded/>
 	    </form>
         </div>
-
-        <div class="old-pics" id="old-pics"></div>
         <div class="new-pics" id="new-pics"></div>
+        <div class="old-pics" id="old-pics">
+        	<?PHP
+				Header("content-type: application/x-javascript");
+				
+				//This function gets the file names of all images in the current directory
+				//and ouputs them as a JavaScript array
+				$dirname="../images/thumbs/";
+				$pattern="(\.jpg$)|(\.png$)|(\.jpeg$)|(\.gif$)"; //valid image extensions
+				$files = array();
+				$curimage=0;
+				
+				if($handle = opendir($dirname))
+				{
+					while(false !== ($file = readdir($handle)))
+					{   
+					if(eregi($pattern, $file)) //if this file is a valid image
+					{
+						//Output it as a JavaScript array element
+						$files[$curimage] = $file;
+						$curimage++;
+					}
+					}   
+					closedir($handle);
+				}
+			?>
+        </div>
     </body>
     <!-- call functions -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -23,5 +47,7 @@
     <script type="text/javascript">
 		jQuery.event.add(window, "load", resize);
 		jQuery.event.add(window, "resize", resize);
+		var jsArray = ["<?php echo join("\", \"", $files); ?>"];
+		showServerPics(jsArray);
 	</script>
 </html>
