@@ -9,8 +9,8 @@
             <form action="file-upload.php" method="post" enctype="multipart/form-data">
                 Send these files:<br />
                <input name="userfile[]" type="file" /><br />
-               <input type="submit" value="Send files" />
-            </form>
+               <input type="submit" value="Send files" onclick="showSubPics()"id=filesUploaded/>
+	    </form>
         </div>
 
         <div class="old-pics" id="old-pics"></div>

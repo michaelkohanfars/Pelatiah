@@ -36,3 +36,9 @@ resize = (function()
         		$("#new-pics").css('width',(w < 768) ? 500 : 800);
 			});
 		 });
+var showSubPics = function()
+{
+    var uploadedPics = document.getElementById("fileNames");
+    alert("in showSubPics");
+    alert(uploadedPics.val);
+}
