@@ -122,7 +122,32 @@
 .new-pics
 {
     background-color:#8EE5EE;
-    width:500px;
-    height:30px;
-    padding:3px;
+    width:715px;
+    height:200px;
+	overflow:auto;
+}
+
+.old-pics
+{
+	background-color:#FFFF00;
+	width:715px;
+	height:400px;
+	position:fixed;
+	overflow:auto;
+}
+
+.delete-pics
+{
+	background-color:#FF0000;
+	width: 550px;
+	height: 400px;
+	margin-left: 720px;
+	overflow:auto;
+}
+
+.drag
+{
+	position:relative;
+	cursor:hand;
+	z-index: 100;
 }
