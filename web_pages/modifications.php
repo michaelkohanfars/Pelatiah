@@ -6,11 +6,8 @@
 		<script type="text/javascript" src="../js/jquery.tmpl.min.js"></script>
         <script type="text/javascript" src="../js/pict.js"></script>
         <link type="text/css" href="../css/ui-lightness/jquery-ui-1.8.20.custom.css" rel="Stylesheet" />	
-		<script type="text/javascript" src="../js/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
 		<script type="text/javascript" src="../js/jquery-ui-1.8.20.custom.min.js"></script>
-        <script type="text/javascript">
-			//dragobject.initialize();
-		</script>
     </head>
     
     <body id="mod-body">
@@ -19,9 +16,10 @@
                 Send these files:<br />
                <input name="userfile[]" type="file" /><br />
                <input type="submit" value="Send files" onclick="showSubPics()"id=filesUploaded/>
-	    </form>
+	    	</form>
         </div>
-        <div class="new-pics" id="new-pics"></div>
+        <div class="new-pics" id="new-pics">
+        </div>
   		<div class="old-pics" id="old-pics">
 			<?PHP
                 Header("content-type: application/x-javascript");
@@ -61,13 +59,15 @@
 		var jsArray = ["<?php echo join("\", \"", $files); ?>"];
 		showServerPics(jsArray);
 		$(function() {
-			$('delete-pics').droppable( 
-				{
-					drop: function(event,ui) {
-						$(this).add(ui.draggable);
-					}
-				}
-			)
+			$('.delete-pics').droppable(),
+			$('.delete-pics').bind( "drop", function(event, ui) 
+					{
+						if(!marked_delete.hasOwnProperty(ui.helper.attr('src')))
+						{
+							ui.draggable.clone().appendTo(this);
+							marked_delete[ui.helper.attr('src')] = ui.draggable;
+						}
+					})
 		});
 	</script>
 </html>
