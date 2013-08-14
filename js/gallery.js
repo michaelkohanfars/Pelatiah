@@ -198,6 +198,7 @@ $(function()
 				
 				_showImage( $items.eq( current ) );
 				
+				
 			},
 			_showImage		= function( $item ) {
 				
@@ -211,6 +212,7 @@ $(function()
 				var $thumb		= $item.find('img'),
 					largesrc	= $thumb.data('large'),
 					title		= $thumb.data('description');
+					
 				
 				$('<img/>').load( function() {
 					
@@ -229,6 +231,7 @@ $(function()
 					anim	= false;
 					
 				}).attr( 'src', largesrc );
+				
 				
 			},
 			addItems		= function( $new ) {

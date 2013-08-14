@@ -1,9 +1,8 @@
-var pictureViewer = function(pictArray)
-                    {
+var pictureViewer = function(pictArray) {
                         var picGallery = document.getElementById("cp");
                         var list, anchor, img;
                         
-                        for(var i = 0; i<pictArray.length; i++)
+                        for(i = 0; i<pictArray.length; i++)
                         {  
                             //Create new img object
                             img = document.createElement("img");
@@ -47,7 +46,7 @@ var showSubPics = function()
 
 function showServerPics(pictArray)
 {
-	var oldPics = document.getElementById("old-pics");
+	var oldPics = document.getElementById("old-pics-tab-1");
     var img;
     
     for(var i = 0; i < pictArray.length; i++)
@@ -60,7 +59,7 @@ function showServerPics(pictArray)
 		img.style.width = '200px';
 		img.style.height = '150px';
 		img.style.padding = '15px';
-		//img.className = "drag";
+		// make draggable and bring to front
 		$(img).draggable(
 			{helper: 'clone'},
 			{appendTo: 'body'}
@@ -75,73 +74,77 @@ function resizeOldPicsWindow()
 	 
 }
 
-/*var dragobject =
+function initiateTabs()
 {
-	z: 0, x: 0, y: 0,
-	offsetx : null, 
-	offsety : null,
-	targetobj : null,
-	dragapproved : 0,
-	
-	initialize:function()
-	{
-		document.onmousedown=this.drag
-		document.onmouseup=function()
-		{
-			this.dragapproved=0
-			
-			deleteWindow = document.getElementById("delete-pics");
-				
-			if( !marked_delete.hasOwnProperty(this.targetobj.src))
-			{
-				deleteWindow.appendChild(this.targetobj.cloneNode(true));
-				marked_delete[this.targetobj.src] = this.targetobj;
-			}
-			
-		}
-	},
-	
-	drag:function(e)
-	{
-		var evtobj=window.event? window.event : e
-		this.targetobj=window.event? event.srcElement : e.target
-
-		if (this.targetobj.className=="drag")
-		{
-			this.dragapproved=1
-			
-			if (isNaN(parseInt(this.targetobj.style.left)))
-			{
-				this.targetobj.style.left=0
-			}
-			
-			if (isNaN(parseInt(this.targetobj.style.top)))
-			{
-				this.targetobj.style.top=0
-			}
-			
-			this.offsetx = parseInt(this.targetobj.style.left)
-			this.offsety = parseInt(this.targetobj.style.top)
-			this.x = evtobj.clientX
-			this.y = evtobj.clientY
-
-			if (evtobj.preventDefault)
-				evtobj.preventDefault()
-			
-			document.onmousemove=dragobject.moveit
-		}
-	},
-
-	moveit:function(e)
-	{
-		var evtobj=window.event? window.event : e
-		if (this.dragapproved==1)
-		{
-			this.targetobj.style.left=this.offsetx+evtobj.clientX-this.x+"px"
-			this.targetobj.style.top=this.offsety+evtobj.clientY-this.y+"px"
-				
-			return false
-		}
-	}
+	$( "#old-pics-tab" ).tabs();
+	$("#delete-pics-tab").tabs();
 }
-*/
+
+function makeDroppable()
+{
+	// make delete box droppable
+	$('.delete-pics').droppable(),
+	// on drop...
+	$('.delete-pics').bind( "drop", 
+		function(event, ui) 
+		{
+			// if not marked as delete
+			if(!marked_delete.hasOwnProperty(ui.helper.attr('src')))
+			{
+				//clone and append to delete box
+				ui.draggable.clone().appendTo($('.delete-imgs'));
+				// put in data structure to mark for deletion
+				marked_delete[ui.helper.attr('src')] = ui.draggable;
+			}
+		});
+}
+
+function convertHash(hash)
+{
+	var size = 0;
+	for(var k in hash)
+	{
+		size++;
+	}
+	
+	var str = "length=" + size + "&";
+	var array = new Array(size);
+	var i = 0;
+	for(var k in hash)
+	{
+		if( i != (size-1) ) {
+			str = str + "img" + i + "=" + (hash[k]).attr('src')+ "&";
+		}
+		else
+		{
+			str = str + "img" + i + "=" + (hash[k]).attr('src');
+		}
+		i++;
+		
+	}
+	return str;
+}
+
+
+function submitButtonCall()
+{
+	$('#submitButton').click( function() {
+		var string = convertHash(marked_delete);
+		alert(string);
+		$.ajax({
+				type:'POST',
+				url: "../web_pages/buttons.php",
+				data: string,
+				success: function(response) { alert(response); clearAll(); }
+			    });
+		return false;
+		}
+	)
+}
+
+
+function clearAll()
+{
+	$('.delete-imgs').empty();
+	marked_delete = [];
+}

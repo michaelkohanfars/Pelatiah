@@ -1,5 +1,28 @@
 /* CSS Document */
 
+@font-face
+{
+font-family: caligraphic;
+src: url('Calligraphic 421 BT.ttf');
+}
+
+/*.page-name
+{
+	font-family: caligraphic;
+	font-size:50px;
+	color:white;
+	text-align:center;
+} */
+
+/*.description
+{
+	font-family: caligraphic;
+	font-size:20px;
+	color:blue;
+	text-align:center;	
+}*/
+
+
 /*This CSS element deals with the larger image wrapper class*/
 .rg-image-wrapper{
     position:relative;
@@ -152,7 +175,12 @@
 	z-index: 100;
 }
 
-body
+.mod-body
 {
-	background-color:#E3A869
+	background-color:#0FF
 }
+
+/*body
+{
+    background-color:rgb(50,50,50);
+}*/
