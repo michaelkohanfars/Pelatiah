@@ -1,5 +1,5 @@
 body {
-	background-color: rgb(50,50,50);
+	background-color: #FFFFFF;
 	
 	font: 12px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	/*color: #9aa6af; */
@@ -21,7 +21,7 @@ a {text-decoration: none;}
 
 .container {
 	overflow: hidden;
-	background-color: rgb(50,50,50);
+	background-color: #FFFFFF;
 
 /*  Prevents Flickering  */
 	-webkit-backface-visibility: hidden;
@@ -32,15 +32,15 @@ a {text-decoration: none;}
 header {
 	height: 60px;
 	position: relative;
-	background-color: orange;
+	background-color: #000000;
 }
 header h1 {
 	text-align: center;
 	font-size: 35px;
 	line-height: 60px;
 	font-weight: bold;
-	font-family: caligraphic;
-	color: #fff;
+	font-family: Oranienbaum;
+	color: #FFFFFF;
 }
 
 .burger {
@@ -55,7 +55,7 @@ header h1 {
 .burger li {
 	width: 30px;
 	height: 4px;
-	background-color: #fff;
+	background-color: #FFFFFF;
 	border-radius: 3px;
 	margin: 5px 0;
 }
@@ -66,17 +66,20 @@ nav {
 	top: 0;
 	text-align: center;
 }
+
+
 nav li {
 	display: inline-block;
 }
 nav li a {
-	font-size: 11px;
-	color: #9aa6af;
-	padding: 24px 15px;
-	
+	font: 15px OswaldBook;
+	color: #000000;
+	padding: 5px 10px;
 	display: block;
 }
-nav li a:hover {color: #000;}
+nav li a:hover {
+	color: rgb(200, 210, 137);
+}
 
 
 /*  Removable CSS  */
@@ -86,22 +89,20 @@ nav li a:hover {color: #000;}
 .footer-section 
 {padding: 0px;}
 
-.header-section {background-color: rgb(50,50,50);}
+.header-section {background-color: #FFFFFF;}
 
 .intro {
 	font-family: caligraphic;
 	font-size: 20px;
-	color: blue;
+	color: #666666;
 	text-align: center;
+	background-color: #FFFFFF;
+	padding: 10px;
 }
 
 
-.body-section {background-color: rgb(50,50,50);}
-.footer-section {background-color: rgb(50,50,50);}
-
-
-
-
+.body-section {background-color: #FFFFFF;}
+.footer-section {background-color: #FFFFFF;}
 
 
 @media only screen and (max-width: 780px) {
@@ -109,7 +110,7 @@ nav li a:hover {color: #000;}
 header {
 	height: 60px;
 	z-index: 2;
-	background-color: orange;
+	background-color: #000000;
 	
 	position: fixed;
 	top: 0;
@@ -128,7 +129,6 @@ header h1 {
 .intro {
 	position: relative;
 	top: 60px;
-	background-color: rgb(50,50,50);
 }
 
 .burger {display: block;}
@@ -150,19 +150,19 @@ nav li {
 	float: none;
 }
 nav li a {
-	padding: 22px 25px;
+	padding: 19px 19px;
 	letter-spacing: 3px;
-	font-size: 14px;
+	color: #FFFFFF;
 }
 nav li a.logo {
 	display: none;
 }
 nav li a.active {
-	color: #fff;
+	color: #ff7469;
 	background-color: #141e23;
 }
 nav li a:hover {
-	color: #fff;
+	color: #ff7469;
 	background-color: #19252c;
 }
 nav li:first-child a.active,

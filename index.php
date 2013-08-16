@@ -13,6 +13,7 @@
     <!-- Style Sheets --> 
 	<link rel="stylesheet" type="text/css" media="all" href="css/reset.css" />
 	<link rel="stylesheet" type="text/css" media="all" href="css/trunk.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="fonts/font.css" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/elastislide.css" />
     <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow&v1' rel='stylesheet' type='text/css' />
@@ -95,7 +96,7 @@
 			<ul id="navToggle" class="burger slideRight">    <!--	Add "slideRight" class to items that move right when viewing Nav Drawer  -->
 				<li></li><li></li><li></li>
 			</ul>
-			<h1>Pelatiah Clothing</h1>
+			<h1>PELATIAH CLOTHING</h1>
 		</header>
 		
 		<section class="intro slideRight">
@@ -105,12 +106,16 @@
 		<nav class="slideLeft">
 			<ul>
 				<li><a href="#" class="active">HOME</a></li>
-				<li><a href="#">LINK TWO</a></li>
-				<li><a href="#">LINK THREE</a></li>
-				<li><a href="#">LINK FOUR</a></li>
-				<li><a href="#">LINK FIVE</a></li>
-				<li><a href="#">LINK SIX</a></li>
-				<li><a href="#">LINK SEVEN</a></li>
+				<li><a href="#">GALLERY</a></li>
+				<li>
+					<a href="#">SERVICES</a>
+					<ul>
+						<li><a href="#">Sewing</a></li>					
+						<li><a href="#">Alterations</a></li>
+					</ul>
+				</li>
+				<li><a href="#">ABOUT US</a></li>
+				<li><a href="#">CONTACT</a></li>
 			</ul>
 		</nav>
 	
